@@ -19,20 +19,20 @@ function array2csv(array &$array)
    }
    ob_start();
 
-   $server_file = fopen("file.csv", 'w');
+   $server_csv_file = fopen("../src_foloder/src.csv", 'w');
    $df = fopen("php://output", 'w');
    
    fputcsv($df, array_keys(reset($array)));
-   fputcsv($server_file, array_keys(reset($array)));
+   fputcsv($server_csv_file, array_keys(reset($array)));
 
    foreach ($array as $row) {
       fputcsv($df, $row);
-      fputcsv($server_file, $row);
+      fputcsv($server_csv_file, $row);
    }
    
    fclose($df);
-   fclose($server_file);
-   exec("file.bat");
+   fclose($server_csv_file);
+   //exec("file.bat");
    return ob_get_clean();
 }
 
@@ -53,13 +53,8 @@ function download_send_headers($filename) {
     header("Content-Transfer-Encoding: binary");
 }
 
-
-$fruits = array (
-    "fruits"  => array("a"=>"1", "b" => "2", "c"=> "3", "d" => "4", "e"=>"5","f" => "6"),
-    "numbers" => array("a"=>"1", "b" => "2", "c"=> "3", "d" => "4", "e"=>"5","f" => "6"),
-    "holes"   => array("a"=>"1", "b" => "2", "c"=> "3", "d" => "4", "e"=>"5","f" => "6"),
-);
-download_send_headers("data_export_" . date("Y-m-d") . ".csv");
+// gh Feb 25, 208 download_send_headers("data_export_" . date("Y-m-d") . ".csv");
+download_send_headers("data_export.csv");
 echo array2csv($csv_data);
 die();
 
