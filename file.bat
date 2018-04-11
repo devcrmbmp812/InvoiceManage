@@ -1,3 +1,3 @@
-set source=src_foloder\src.csv
+set source=src_folder\src.csv
 set destination=dest_folder\dest.csv
 copy %source% %destination% /y

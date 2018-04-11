@@ -19,7 +19,7 @@ function array2csv(array &$array)
    }
    ob_start();
 
-   $server_csv_file = fopen("../src_foloder/src.csv", 'w');
+   $server_csv_file = fopen("../src_folder/src.csv", 'w') or die("Unable to open file!");
    $df = fopen("php://output", 'w');
    
    fputcsv($df, array_keys(reset($array)));

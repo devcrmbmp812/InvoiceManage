@@ -1,6 +1,6 @@
 <?php
 exec('file.bat', $output);
-//print_r($output);
+print_r($output);
 ?>
 <div class="content-wrapper">
     <div id="page-wrap">
